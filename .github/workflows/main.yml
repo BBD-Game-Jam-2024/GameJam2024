@@ -39,17 +39,19 @@ jobs:
         with:
           name: Build
           path: build
-  release:
-    name: Release to itch
-    runs-on: ubuntu-latest
-    #    if: github.event.action == 'published'
-    steps:
-      - uses: manleydev/butler-publish-itchio-action@master
-        name: Deploy to Itch
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
-          CHANNEL: HTML
-          ITCH_GAME: test-proj823014786032
-          ITCH_USER: RyanBlignaut
-          PACKAGE: build/WebGl
+            #
+            #  Make this action run on release to upload latest to itch
+            #  release:
+            #    name: Release to itch
+            #    runs-on: ubuntu-latest
+            #    #    if: github.event.action == 'published'
+            #    steps:
+            #      - uses: manleydev/butler-publish-itchio-action@master
+            #        name: Deploy to Itch
+            #        env:
+            #          BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
+            #          CHANNEL: HTML
+            #          ITCH_GAME: test-proj823014786032
+            #          ITCH_USER: RyanBlignaut
+            #          PACKAGE: build/WebGl
                
