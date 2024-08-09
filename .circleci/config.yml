@@ -15,8 +15,8 @@ workflows:
           unity-license-var-name: "UNITY_ENCODED_LICENSE"
           unity-username-var-name: "UNITY_USERNAME"
           unity-password-var-name: "UNITY_PASSWORD"
-#          executor:
-#            name: "unity/ubuntu"
+          executor:
+            name: "unity/ubuntu"
 #            target_platform: "webgl"
 #            editor_version: "2022.3.37f1"
 #            resource_class: "large"
