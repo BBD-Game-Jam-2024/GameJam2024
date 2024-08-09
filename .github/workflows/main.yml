@@ -47,7 +47,7 @@ jobs:
       - uses: manleydev/butler-publish-itchio-action@master
         name: Deploy to Itch
         env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
           CHANNEL: HTML
           ITCH_GAME: test_1234
           ITCH_USER: can_this_be_anything
