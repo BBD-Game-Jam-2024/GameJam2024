@@ -6,6 +6,10 @@ jobs:
   build:
     name: Build game jam project ✨
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src
+        
     steps:
       # Checkout
       - name: Checkout repository
@@ -16,11 +20,10 @@ jobs:
       # Cache
       - uses: actions/cache@v3
         with:
-          path: src/Library
+          path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-          working-directory: src
 
       # Build
       - name: Build project
@@ -31,10 +34,9 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
-          working-directory: src
 
       # Output
       - uses: actions/upload-artifact@v3
         with:
           name: Build
-          path: src/build
+          path: build
