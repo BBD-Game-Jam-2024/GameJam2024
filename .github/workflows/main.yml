@@ -49,7 +49,7 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
           CHANNEL: HTML
-          ITCH_GAME: test_1234
+          ITCH_GAME: test-proj823014786032
           ITCH_USER: RyanBlignaut
           PACKAGE: build/WebGl
                
