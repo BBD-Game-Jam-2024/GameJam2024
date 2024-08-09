@@ -1,15 +1,12 @@
 ﻿name: Actions 😎
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   build:
     name: Build game jam project ✨
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./src
-        
+    
     steps:
       # Checkout
       - name: Checkout repository
@@ -34,9 +31,10 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
+          projectPath: ./src
 
       # Output
       - uses: actions/upload-artifact@v3
         with:
           name: Build
-          path: build
+          path: ./source/build
