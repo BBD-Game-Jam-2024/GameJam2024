@@ -50,6 +50,6 @@ jobs:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
           CHANNEL: HTML
           ITCH_GAME: test_1234
-          ITCH_USER: can_this_be_anything
+          ITCH_USER: RyanBlignaut
           PACKAGE: build/WebGl
                
