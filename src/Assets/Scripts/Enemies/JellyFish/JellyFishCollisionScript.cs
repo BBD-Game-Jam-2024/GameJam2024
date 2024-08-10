@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionScript : MonoBehaviour
+public class JellyFishCollisionScript : MonoBehaviour
 {
     public LogicManagerScript logic;
     public float deadZone = -5;
@@ -25,7 +25,6 @@ public class CollisionScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            // logic.AddScore(1);
             logic.GameOver();
         }
         

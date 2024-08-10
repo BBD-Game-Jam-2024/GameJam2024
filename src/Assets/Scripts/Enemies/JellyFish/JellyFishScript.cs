@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JellyFishMoveScript : MonoBehaviour
+public class JellyFishScript : MonoBehaviour
 {
     public float moveSpeed = 0.001f;
 
