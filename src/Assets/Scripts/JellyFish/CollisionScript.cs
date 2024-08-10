@@ -6,6 +6,7 @@ using UnityEngine;
 public class CollisionScript : MonoBehaviour
 {
     public LogicManagerScript logic;
+    public float deadZone = -5;
     // Start is called before the first frame update
     void Start()
     {

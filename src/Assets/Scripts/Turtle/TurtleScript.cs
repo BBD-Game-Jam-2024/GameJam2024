@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TurtleScript : MonoBehaviour
 {
-    public Rigidbody2D rigidbody2D;
+    // public Rigidbody2D rigidbody2D;
     public float moveSpeed = 5f;
     public LogicManagerScript logic;
     
