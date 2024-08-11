@@ -416,7 +416,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: e5ad5cfb626d0614783c328d37f37a68, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -770,8 +770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbaed10bd7c42f4383badab0c1d8d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jellyFish: {fileID: 4972778052103278725, guid: f52ae5d6a4403f14aaaeeb5f5c4439d9, type: 3}
-  spawnRate: 2
+  jellyFish: {fileID: 4972778052103278725, guid: 15bf87ab7cc787c44a4449099de6d068, type: 3}
+  spawnRate: 5
   heightOffset: 10
 --- !u!4 &883595047
 Transform:
