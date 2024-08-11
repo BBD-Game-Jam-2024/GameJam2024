@@ -36,5 +36,10 @@ public class LogicManagerScript : MonoBehaviour
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
+        var turtle = GameObject.FindWithTag("Player");
+        if (turtle != null)
+            turtle.GetComponent<TurtleScript>().enabled = false;
     }
+    
+    
 }
