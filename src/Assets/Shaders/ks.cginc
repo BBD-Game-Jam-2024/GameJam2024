@@ -1,5 +1,6 @@
 void pix_shader_float(UnityTexture2D texture_in, const float2 uv, float time_in, const int scroll_speed_factor,
                       const float zoom,
+                      const float speed,
                       float4 back_star_color,
                       float4 front_star_color,
                       out float4 o)
@@ -8,7 +9,7 @@ void pix_shader_float(UnityTexture2D texture_in, const float2 uv, float time_in,
     float volumetric_layer_fade = 1;
     for (int i = 0; i < 12; ++i)
     {
-        const float time = (time_in * pow(volumetric_layer_fade, 2.0) * 3.0) / 1000;
+        const float time = (time_in * pow(volumetric_layer_fade, 2.0) * 3.0) * speed;
         // const float time = time_in / volumetric_layer_fade;
         float2 p = uv * zoom;
 
