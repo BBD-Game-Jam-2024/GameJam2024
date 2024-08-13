@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawnerScript : MonoBehaviour
 {
     public GameObject jellyFish;
+    public GameObject powerUp;
 
     public float spawnRate = 2;
     private float _timer;

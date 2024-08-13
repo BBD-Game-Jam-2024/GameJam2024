@@ -22,7 +22,7 @@ public class CoinCollisionScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 3)
+        if (collision.gameObject.CompareTag("CoinCollision"))
         {
             Destroy(transform.parent.gameObject);
             logic.AddScore(1);
