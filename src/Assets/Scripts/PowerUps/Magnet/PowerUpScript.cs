@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Turtle;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PowerUpScript : MonoBehaviour
 {
@@ -8,7 +12,23 @@ public class PowerUpScript : MonoBehaviour
     private const float DefaultRadius = 2;
     public float deadZone = -5;
     private bool _isActivated = false;
+    private GameObject _magnetTimerUi;
 
+    void Start()
+    {
+        Transform magnetTimerTransform = transform.Find("MagnetTimer");
+
+        if (magnetTimerTransform != null)
+        {
+            _magnetTimerUi = magnetTimerTransform.gameObject;
+            // _magnetTimerUi.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("MagnetTimer GameObject not found in the prefab!");
+        }
+    }
+    
     void Update()
     {
         transform.position += (Vector3.left) * Time.deltaTime;
@@ -28,10 +48,14 @@ public class PowerUpScript : MonoBehaviour
             if (playerCollider != null)
             {
                 playerCollider.radius = 5;
-                Debug.Log("Collider radius increased to: " + playerCollider.radius);
                 StartCoroutine(RevertRadiusAfterDelay(playerCollider, 10f));
                 MakeInvisible();
             }
+            _magnetTimerUi.SetActive(true);
+            // Instantiate and start the timer UI
+            // var timerUI = Instantiate(timerUi, transform.position, Quaternion.identity);
+            // var timerScript = timerUI.GetComponent<CircleLoaderScript>();
+            // timerScript.StartTimer();
         }
     }
 
