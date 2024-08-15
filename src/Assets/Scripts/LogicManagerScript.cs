@@ -11,19 +11,9 @@ public class LogicManagerScript : MonoBehaviour
     public int playerScore;
     public Text score;
     public GameObject gameOverScreen;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject magnetPowerUp;
     
-    [ContextMenu("test")]
+
     public void AddScore(int scoreToAdd)
     {
         playerScore += scoreToAdd;
@@ -42,6 +32,17 @@ public class LogicManagerScript : MonoBehaviour
         if (turtle != null)
             turtle.GetComponent<TurtleScript>().enabled = false;
     }
-    
+
+    public void StartMagnetTimer()
+    {
+        magnetPowerUp.SetActive(true);
+        var magnetLoader = magnetPowerUp.transform.Find("MagnetLoader").gameObject;
+        if (!magnetLoader)
+            return;
+        var magnetLoaderScript = magnetLoader.GetComponent<MagnetLoaderScript>();
+        magnetLoaderScript.StartTimer();
+        
+
+    }
     
 }
