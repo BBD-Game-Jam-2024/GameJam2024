@@ -38,7 +38,7 @@ public class EnemySpawnerScript : MonoBehaviour
         var highestPoint = transform.position.y + heightOffset;
         // Debug.Log(lowestPoint);
         // Debug.Log(highestPoint);
-        Instantiate(jellyFish, new Vector3(transform.position.x, Random.Range(-2, 2), 0), transform.rotation);
+        Instantiate(powerUp, new Vector3(transform.position.x, Random.Range(-2, 2), 0), transform.rotation);
         _timer = 0;
     }
 }

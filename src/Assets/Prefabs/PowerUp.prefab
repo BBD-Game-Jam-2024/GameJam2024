@@ -145,3 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.001
   deadZone: -5
+  timerUIPrefab: {fileID: 0}

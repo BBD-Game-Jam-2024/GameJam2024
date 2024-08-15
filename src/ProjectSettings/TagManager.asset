@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Logic
   - CoinCollision
+  - MagnetTimer
   layers:
   - Default
   - TransparentFX
