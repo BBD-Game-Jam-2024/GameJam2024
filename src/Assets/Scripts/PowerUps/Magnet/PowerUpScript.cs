@@ -13,20 +13,14 @@ public class PowerUpScript : MonoBehaviour
     public float deadZone = -5;
     private bool _isActivated = false;
     private GameObject _magnetTimerUi;
+    
+    public LogicManagerScript logic;
 
     void Start()
     {
-        Transform magnetTimerTransform = transform.Find("MagnetTimer");
-
-        if (magnetTimerTransform != null)
-        {
-            _magnetTimerUi = magnetTimerTransform.gameObject;
-            // _magnetTimerUi.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("MagnetTimer GameObject not found in the prefab!");
-        }
+        logic = GameObject
+            .FindWithTag("Logic")
+            .GetComponent<LogicManagerScript>();
     }
     
     void Update()
@@ -48,14 +42,10 @@ public class PowerUpScript : MonoBehaviour
             if (playerCollider != null)
             {
                 playerCollider.radius = 5;
-                StartCoroutine(RevertRadiusAfterDelay(playerCollider, 10f));
+                StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
                 MakeInvisible();
             }
-            _magnetTimerUi.SetActive(true);
-            // Instantiate and start the timer UI
-            // var timerUI = Instantiate(timerUi, transform.position, Quaternion.identity);
-            // var timerScript = timerUI.GetComponent<CircleLoaderScript>();
-            // timerScript.StartTimer();
+            logic.StartMagnetTimer();
         }
     }
 

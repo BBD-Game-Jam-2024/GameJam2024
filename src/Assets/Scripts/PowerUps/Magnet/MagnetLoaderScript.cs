@@ -1,42 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MagnetLoaderScript : MonoBehaviour
 {
-    public float duration = 3f; // Duration of the power-up timer
-    private Image timerCircle;
+    public float duration = 15f;
+    private Image _timerCircle;
+    private bool _first = true;
 
     void Start()
     {
-        timerCircle = GetComponent<Image>(); // Assume this script is attached to the child GameObject with the Image
-        if (timerCircle != null)
+        _timerCircle = GetComponent<Image>();
+        if (_timerCircle != null)
         {
-            timerCircle.fillAmount = 1f;
+            _timerCircle.fillAmount = 1f;
         }
-
-        // StartTimer();
     }
 
     public void StartTimer()
     {
+        Debug.LogWarning("Starting things");
         StartCoroutine(RunTimer());
     }
 
     private IEnumerator RunTimer()
     {
-        float elapsed = 0f;
+        if(!_first)
+            _timerCircle.fillAmount = 1f;
+
+        var elapsed = 0f;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            timerCircle.fillAmount = 1f - (elapsed / duration);
+            if (_timerCircle)
+                _timerCircle.fillAmount = 1f - (elapsed / duration);
             yield return null;
         }
 
         transform.parent.gameObject.SetActive(false);
-        // When the timer is finished, you can hide or destroy the parent UI element
-        // Destroy(transform.parent.gameObject);
+        _first = false;
     }
 }
