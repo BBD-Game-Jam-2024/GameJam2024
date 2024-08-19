@@ -12,6 +12,7 @@ public class LogicManagerScript : MonoBehaviour
     public Text score;
     public GameObject gameOverScreen;
     public GameObject magnetPowerUp;
+    public GameObject invincibilityPowerUp;
     
 
     public void AddScore(int scoreToAdd)
@@ -42,6 +43,17 @@ public class LogicManagerScript : MonoBehaviour
         var magnetLoaderScript = magnetLoader.GetComponent<MagnetLoaderScript>();
         magnetLoaderScript.StartTimer();
         
+
+    }
+
+    public void StartInvincibilityTimer()
+    {
+        invincibilityPowerUp.SetActive(true);
+        var invincibilityLoader = invincibilityPowerUp.Find("InvincibilityLoader").gameObject;
+        if (!invincibilityLoader)
+            return;
+        var invincibilityLoaderScript = magnetLoader.GetComponent<InvincibilityLoaderScript>();
+        invincibilityLoaderScript.StartTimer();
 
     }
     

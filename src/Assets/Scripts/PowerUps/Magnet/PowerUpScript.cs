@@ -13,6 +13,7 @@ public class PowerUpScript : MonoBehaviour
     public float deadZone = -5;
     private bool _isActivated = false;
     private GameObject _magnetTimerUi;
+    private GameObject _invincibilityTimerUi;
     
     public LogicManagerScript logic;
 
@@ -34,6 +35,20 @@ public class PowerUpScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("InvincibilityCollision") && !_isActivated)
+        {
+            _isActivated = true;
+            var playerCollider = collision.gameObject.GetComponent<CircleCollider2D>();
+            
+            if (playerCollider != null)
+            {
+                playerCollider.radius = 0;
+                StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
+                MakeInvisible();
+            }
+            logic.StartInvincibilityTimer();
+        }
+
         if (collision.gameObject.CompareTag("CoinCollision") && !_isActivated)
         {
             _isActivated = true;
