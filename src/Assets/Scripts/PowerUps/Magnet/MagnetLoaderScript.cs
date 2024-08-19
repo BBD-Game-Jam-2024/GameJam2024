@@ -35,7 +35,8 @@ public class MagnetLoaderScript : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            _timerCircle.fillAmount = 1f - (elapsed / duration);
+            if (_timerCircle)
+                _timerCircle.fillAmount = 1f - (elapsed / duration);
             yield return null;
         }
 

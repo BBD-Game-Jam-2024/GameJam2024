@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68fcc1592c602f648ada48c38d3cf436
+guid: 595e7dc3f074fe7499ffc0310620124c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,17 +93,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turtle-Sheet_0
+      name: SeaWeedV1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 286
-        height: 239
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36f39a08e2a477e4c8cd39ca58406afd
-      internalID: 2109657536
+      spriteID: f4032bbc617cd154fbea4a4ba4e3923d
+      internalID: -1708413540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle-Sheet_1
+      name: SeaWeedV1_1
       rect:
         serializedVersion: 2
-        x: 286
+        x: 32
         y: 0
-        width: 286
-        height: 239
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d32fd96053bf4e8408bbc8ee38d4afb0
-      internalID: -1706507633
+      spriteID: 5b5e67bca4558db428f5caad3c018a5b
+      internalID: -1560937510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle-Sheet_2
+      name: SeaWeedV1_2
       rect:
         serializedVersion: 2
-        x: 572
+        x: 64
         y: 0
-        width: 286
-        height: 239
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5fb6f8f056584a4a956710e5644298f
-      internalID: 1330913276
+      spriteID: 083f192cf009cf84d8b84cb44eff7cdd
+      internalID: -1896489454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle-Sheet_3
+      name: SeaWeedV1_3
       rect:
         serializedVersion: 2
-        x: 858
+        x: 96
         y: 0
-        width: 286
-        height: 239
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ddc503591c919940a7edd7a8da0ea17
-      internalID: 1714944433
+      spriteID: e2bcd80deb2777c4fa1efa4ec839ec7d
+      internalID: -1959402953
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle-Sheet_4
+      name: SeaWeedV1_4
       rect:
         serializedVersion: 2
-        x: 1144
+        x: 128
         y: 0
-        width: 286
-        height: 239
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c8ed2bf68db0e74588397925cd6352b
-      internalID: 1664306380
+      spriteID: eda87d7809d313c4ea05bb926f5f9f17
+      internalID: 1804926534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle-Sheet_5
+      name: SeaWeedV1_5
       rect:
         serializedVersion: 2
-        x: 1430
+        x: 160
         y: 0
-        width: 286
-        height: 239
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ca174e398ebee143958ee9c75843638
-      internalID: 109637763
+      spriteID: 0561dfdaf983947428c51d3a18a798ac
+      internalID: -1059665588
       vertices: []
       indices: 
       edges: []
@@ -233,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      turtle-Sheet_0: 2109657536
-      turtle-Sheet_1: -1706507633
-      turtle-Sheet_2: 1330913276
-      turtle-Sheet_3: 1714944433
-      turtle-Sheet_4: 1664306380
-      turtle-Sheet_5: 109637763
+      SeaWeedV1_0: -1708413540
+      SeaWeedV1_1: -1560937510
+      SeaWeedV1_2: -1896489454
+      SeaWeedV1_3: -1959402953
+      SeaWeedV1_4: 1804926534
+      SeaWeedV1_5: -1059665588
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
