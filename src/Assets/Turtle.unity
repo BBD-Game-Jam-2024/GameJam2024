@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 140826218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.46, y: 0, z: 0}
+  m_LocalPosition: {x: -7.65, y: 0.02, z: 0}
   m_LocalScale: {x: 0.51, y: 0.51, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -496,7 +496,7 @@ MonoBehaviour:
   playerScore: 0
   score: {fileID: 1502312706}
   gameOverScreen: {fileID: 822219962}
-  magnetPowerUp: {fileID: 552044997}
+  magnetPowerUp: {fileID: 0}
 --- !u!4 &319183640
 Transform:
   m_ObjectHideFlags: 0
@@ -983,6 +983,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &956138884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956138886}
+  - component: {fileID: 956138885}
+  m_Layer: 0
+  m_Name: New spawner test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &956138885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956138884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f811c2d58d834763873e032fe3bfb6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemToSpawn:
+  - {fileID: 1815731607191668604, guid: 0d05c0c21f9350747a17bc7b42987bee, type: 3}
+  - {fileID: 4972778052103278725, guid: f52ae5d6a4403f14aaaeeb5f5c4439d9, type: 3}
+  - {fileID: 4972778052103278725, guid: 15bf87ab7cc787c44a4449099de6d068, type: 3}
+  - {fileID: 7877577501255930368, guid: 0825636384e78134b80df218c89fdfc9, type: 3}
+  spawnRatio:
+  - 12
+  - 12
+  - 12
+  - 12
+  spawnRate: 2
+  heightOffset: 2
+--- !u!4 &956138886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956138884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.96, y: -0.8, z: 0.07071555}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1107333118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,7 +1332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 1815731607191668604, guid: 0d05c0c21f9350747a17bc7b42987bee, type: 3}
   spawnRate: 2
-  heightOffset: 2
+  heightOffset: 11
 --- !u!4 &1500392063
 Transform:
   m_ObjectHideFlags: 0
@@ -1837,4 +1893,5 @@ SceneRoots:
   - {fileID: 140826221}
   - {fileID: 275008026}
   - {fileID: 1399343639}
+  - {fileID: 956138886}
   - {fileID: 876092823}
