@@ -68,11 +68,11 @@ public class LogicManagerScript : MonoBehaviour
     public void StartInvincibilityTimer()
     {
         invincibilityPowerUp.SetActive(true);
-        var invincibilityLoader = invincibilityPowerUp.Find("InvincibilityLoader").gameObject;
-        if (!invincibilityLoader)
-            return;
-        var invincibilityLoaderScript = invincibilityLoader.GetComponent<InvincibilityLoaderScript>();
-        invincibilityLoaderScript.StartTimer();
+        // var invincibilityLoader = invincibilityPowerUp.Find("InvincibilityLoader").gameObject;
+        // if (!invincibilityLoader)
+        //     return;
+        // var invincibilityLoaderScript = invincibilityLoader.GetComponent<InvincibilityLoaderScript>();
+        // invincibilityLoaderScript.StartTimer();
 
     }
     

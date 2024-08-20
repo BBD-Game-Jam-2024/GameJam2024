@@ -6,6 +6,7 @@ public class EnemySpawnerScript : MonoBehaviour
 {
     public GameObject jellyFish;
     public GameObject powerUp;
+    public GameObject invincibility;
 
     public float spawnRate = 2;
     private float _timer;
@@ -36,7 +37,7 @@ public class EnemySpawnerScript : MonoBehaviour
         // Need to find the lowest point and highest point, below doesnt work idk why
         var lowestPoint = transform.position.y - heightOffset;
         var highestPoint = transform.position.y + heightOffset;
-        Instantiate(jellyFish, new Vector3(transform.position.x, Random.Range(-2, 2), 0), transform.rotation);
+        Instantiate(invincibility, new Vector3(transform.position.x, Random.Range(-2, 2), 0), transform.rotation);
         _timer = 0;
     }
 }

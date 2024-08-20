@@ -503,6 +503,7 @@ MonoBehaviour:
   coinSpawner: {fileID: 1500392061}
   turtle: {fileID: 140826218}
   magnetPowerUp: {fileID: 552044997}
+  invincibilityPowerUp: {fileID: 0}
 --- !u!4 &319183640
 Transform:
   m_ObjectHideFlags: 0
@@ -1005,6 +1006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jellyFish: {fileID: 4972778052103278725, guid: 15bf87ab7cc787c44a4449099de6d068, type: 3}
   powerUp: {fileID: 7877577501255930368, guid: 0825636384e78134b80df218c89fdfc9, type: 3}
+  invincibility: {fileID: 7877577501255930368, guid: 474047577e9d35845b9ae0d5b1700912, type: 3}
   spawnRate: 5
   heightOffset: 10
 --- !u!4 &883595047

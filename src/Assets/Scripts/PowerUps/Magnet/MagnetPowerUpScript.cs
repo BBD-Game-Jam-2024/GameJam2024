@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PowerUpScript : MonoBehaviour
+public class MagnetPowerUpScript : MonoBehaviour
 {
     public float moveSpeed = 0.001f;
     private const float DefaultRadius = 2;
