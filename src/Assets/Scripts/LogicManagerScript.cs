@@ -10,7 +10,13 @@ public class LogicManagerScript : MonoBehaviour
 {
     public int playerScore;
     public Text score;
+    public GameObject mainMenu;
+    
     public GameObject gameOverScreen;
+    public GameObject enemySpawner;
+    public GameObject coinSpawner;
+    public GameObject turtle;
+    
     public GameObject magnetPowerUp;
     public GameObject invincibilityPowerUp;
     
@@ -21,14 +27,27 @@ public class LogicManagerScript : MonoBehaviour
         score.text = playerScore.ToString();
     }
 
+    public void StartGame()
+    {
+        mainMenu.SetActive(false);
+        enemySpawner.SetActive(true);
+        coinSpawner.SetActive(true);
+        turtle.SetActive(true);
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        enemySpawner.SetActive(true);
+        coinSpawner.SetActive(true);
+        turtle.SetActive(true);
     }
 
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
+        enemySpawner.SetActive(false);
+        coinSpawner.SetActive(false);
         var turtle = GameObject.FindWithTag("Player");
         if (turtle != null)
             turtle.GetComponent<TurtleScript>().enabled = false;

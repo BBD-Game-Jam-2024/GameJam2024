@@ -56,7 +56,7 @@ public class PowerUpScript : MonoBehaviour
             
             if (playerCollider != null)
             {
-                playerCollider.radius = 5;
+                playerCollider.radius = 0.9f;
                 StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
                 MakeInvisible();
             }
