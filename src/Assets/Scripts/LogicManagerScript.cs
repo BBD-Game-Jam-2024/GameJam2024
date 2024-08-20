@@ -52,7 +52,7 @@ public class LogicManagerScript : MonoBehaviour
         var invincibilityLoader = invincibilityPowerUp.Find("InvincibilityLoader").gameObject;
         if (!invincibilityLoader)
             return;
-        var invincibilityLoaderScript = magnetLoader.GetComponent<InvincibilityLoaderScript>();
+        var invincibilityLoaderScript = invincibilityLoader.GetComponent<InvincibilityLoaderScript>();
         invincibilityLoaderScript.StartTimer();
 
     }
