@@ -1004,11 +1004,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbaed10bd7c42f4383badab0c1d8d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jellyFish: {fileID: 4972778052103278725, guid: 15bf87ab7cc787c44a4449099de6d068,
-    type: 3}
+  jellyFish: {fileID: 4972778052103278725, guid: 15bf87ab7cc787c44a4449099de6d068, type: 3}
   powerUp: {fileID: 7877577501255930368, guid: 0825636384e78134b80df218c89fdfc9, type: 3}
-  invincibility: {fileID: 7877577501255930368, guid: 474047577e9d35845b9ae0d5b1700912,
-    type: 3}
+  invincibility: {fileID: 7877577501255930368, guid: 474047577e9d35845b9ae0d5b1700912, type: 3}
   spawnRate: 5
   heightOffset: 10
 --- !u!4 &883595047
@@ -1018,6 +1016,62 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883595045}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.96, y: -0.8, z: 0.07071555}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &956138884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956138886}
+  - component: {fileID: 956138885}
+  m_Layer: 0
+  m_Name: New spawner test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &956138885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956138884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f811c2d58d834763873e032fe3bfb6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemToSpawn:
+  - {fileID: 1815731607191668604, guid: 0d05c0c21f9350747a17bc7b42987bee, type: 3}
+  - {fileID: 4972778052103278725, guid: f52ae5d6a4403f14aaaeeb5f5c4439d9, type: 3}
+  - {fileID: 4972778052103278725, guid: 15bf87ab7cc787c44a4449099de6d068, type: 3}
+  - {fileID: 7877577501255930368, guid: 0825636384e78134b80df218c89fdfc9, type: 3}
+  spawnRatio:
+  - 12
+  - 12
+  - 12
+  - 12
+  spawnRate: 2
+  heightOffset: 2
+--- !u!4 &956138886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956138884}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.96, y: -0.8, z: 0.07071555}
@@ -1169,62 +1223,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &956138884
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 956138886}
-  - component: {fileID: 956138885}
-  m_Layer: 0
-  m_Name: New spawner test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &956138885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956138884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f811c2d58d834763873e032fe3bfb6c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemToSpawn:
-  - {fileID: 1815731607191668604, guid: 0d05c0c21f9350747a17bc7b42987bee, type: 3}
-  - {fileID: 4972778052103278725, guid: f52ae5d6a4403f14aaaeeb5f5c4439d9, type: 3}
-  - {fileID: 4972778052103278725, guid: 15bf87ab7cc787c44a4449099de6d068, type: 3}
-  - {fileID: 7877577501255930368, guid: 0825636384e78134b80df218c89fdfc9, type: 3}
-  spawnRatio:
-  - 12
-  - 12
-  - 12
-  - 12
-  spawnRate: 2
-  heightOffset: 2
---- !u!4 &956138886
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956138884}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.96, y: -0.8, z: 0.07071555}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1107333118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,7 +1427,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start Game
+  m_Text: Dive in
 --- !u!222 &1144136909
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +8,7 @@ public class MagnetLoaderScript : MonoBehaviour
     private Image _timerCircle;
     private bool _first = true;
 
-    void Start()
+    private void Start()
     {
         _timerCircle = GetComponent<Image>();
         if (_timerCircle != null)
