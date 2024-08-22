@@ -34,5 +34,16 @@ namespace Turtle
             var targetPosition = new Vector3(clampedX, clampedY, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag != "CoinCollision")
+            {
+                
+                Debug.LogWarning(collision.gameObject.tag);
+
+                logic.GameOver();
+            }
+            
+        }
     }
 }

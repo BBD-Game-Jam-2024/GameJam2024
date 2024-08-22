@@ -24,9 +24,10 @@ public class BubbleCollisionScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            
             Debug.LogWarning(collision.gameObject.tag);
 
-            logic.GameOver();
+            // logic.GameOver();
         }
         
     }
