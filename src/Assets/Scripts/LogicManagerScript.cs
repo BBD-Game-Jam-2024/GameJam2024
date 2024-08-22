@@ -68,7 +68,7 @@ public class LogicManagerScript : MonoBehaviour
     public void StartInvincibilityTimer()
     {
         bubblePowerUp.SetActive(true);
-        var bubbleLoader = bubblePowerUp.Find("BubbleLoader").gameObject;
+        var bubbleLoader = bubblePowerUp.transform.Find("BubbleLoader").gameObject;
         if (!bubbleLoader)
             return;
         var bubbleLoaderScript = bubbleLoader.GetComponent<BubbleLoaderScript>();

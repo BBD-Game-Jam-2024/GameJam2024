@@ -1098,6 +1098,7 @@ MonoBehaviour:
   bubblePowerUp: {fileID: 7877577501255930368, guid: 474047577e9d35845b9ae0d5b1700912, type: 3}
   spawnRate: 5
   heightOffset: 10
+  count: 0
 --- !u!4 &883595047
 Transform:
   m_ObjectHideFlags: 0
@@ -2428,11 +2429,11 @@ GameObject:
   - component: {fileID: 1928087431}
   m_Layer: 5
   m_Name: BubbleTimer
-  m_TagString: Untagged
+  m_TagString: BubbleTimer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1928087431
 RectTransform:
   m_ObjectHideFlags: 0
