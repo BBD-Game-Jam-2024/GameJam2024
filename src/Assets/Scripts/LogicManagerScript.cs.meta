@@ -3,7 +3,15 @@ guid: 4cf24b196be5cb2498dc0474a09ddba0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - score: {instanceID: 0}
+  - mainMenu: {instanceID: 0}
+  - gameOverScreen: {instanceID: 0}
+  - enemySpawner: {instanceID: 0}
+  - coinSpawner: {instanceID: 0}
+  - turtle: {instanceID: 0}
+  - magnetPowerUp: {instanceID: 0}
+  - bubblePowerUp: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
