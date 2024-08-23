@@ -10,6 +10,7 @@ TagManager:
   - MagnetPowerUp
   - BubblePowerUp
   - BubbleTimer
+  - SharkCollision
   layers:
   - Default
   - TransparentFX

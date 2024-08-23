@@ -32,6 +32,7 @@ public class BubblePowerUpScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.CompareTag("CoinCollision") &&!_isActivated)
         {
             _isActivated = true;
