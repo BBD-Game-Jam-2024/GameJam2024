@@ -1,28 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Turtle;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class MagnetPowerUpScript : MonoBehaviour
+public class BubblePowerUpScript : MonoBehaviour
 {
+    
+    private GameObject _bubbleTimerUi;
+    public float deadZone = -5;    
     public float moveSpeed = 0.001f;
     private const float DefaultRadius = 2;
-    public float deadZone = -5;
     private bool _isActivated = false;
-    private GameObject _magnetTimerUi;
-    
     public LogicManagerScript logic;
 
+    // Start is called before the first frame update
     void Start()
     {
         logic = GameObject
             .FindWithTag("Logic")
             .GetComponent<LogicManagerScript>();
     }
-    
+
+    // Update is called once per frame
     void Update()
     {
         transform.position += (Vector3.left) * Time.deltaTime;
@@ -34,19 +32,19 @@ public class MagnetPowerUpScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.gameObject.CompareTag("CoinCollision") && !_isActivated)
+        
+        if (collision.gameObject.CompareTag("CoinCollision") &&!_isActivated)
         {
             _isActivated = true;
             var playerCollider = collision.gameObject.GetComponent<CircleCollider2D>();
             
             if (playerCollider != null)
             {
-                playerCollider.radius = 0.9f;
+                playerCollider.radius = 0;
                 StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
                 MakeInvisible();
             }
-            logic.StartMagnetTimer();
+            logic.StartInvincibilityTimer();
         }
     }
 

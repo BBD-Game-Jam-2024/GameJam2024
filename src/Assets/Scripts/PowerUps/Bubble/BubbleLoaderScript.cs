@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InvincibilityLoaderScript : MonoBehaviour
+public class BubbleLoaderScript : MonoBehaviour
 {
     public float duration = 15f;
     private Image _timerCircle;

@@ -17,13 +17,13 @@ public class LogicManagerScript : MonoBehaviour
     public GameObject mainMenu;
 
     public GameObject gameOverScreen;
+    public GameObject mainMenuImg;
     public GameObject enemySpawner;
     public GameObject coinSpawner;
     public GameObject turtle;
 
     public GameObject magnetPowerUp;
-    public GameObject invincibilityPowerUp;
-
+    public GameObject bubblePowerUp;
 
     public void AddScore(int scoreToAdd)
     {
@@ -110,12 +110,12 @@ public class LogicManagerScript : MonoBehaviour
 
     public void StartInvincibilityTimer()
     {
-        invincibilityPowerUp.SetActive(true);
-        // var invincibilityLoader = invincibilityPowerUp.Find("InvincibilityLoader").gameObject;
-        // if (!invincibilityLoader)
-        //     return;
-        // var invincibilityLoaderScript = invincibilityLoader.GetComponent<InvincibilityLoaderScript>();
-        // invincibilityLoaderScript.StartTimer();
+        bubblePowerUp.SetActive(true);
+        var bubbleLoader = bubblePowerUp.transform.Find("BubbleLoader").gameObject;
+        if (!bubbleLoader)
+            return;
+        var bubbleLoaderScript = bubbleLoader.GetComponent<BubbleLoaderScript>();
+        bubbleLoaderScript.StartTimer();
     }
 }
 

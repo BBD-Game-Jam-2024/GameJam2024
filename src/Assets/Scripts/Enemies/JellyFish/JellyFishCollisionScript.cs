@@ -25,7 +25,7 @@ public class JellyFishCollisionScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 3 && collision.gameObject.tag != "CoinCollision")
         {
-            logic.GameOver();
+            // logic.GameOver();
         }
         
     }

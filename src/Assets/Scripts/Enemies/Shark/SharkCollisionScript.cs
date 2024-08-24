@@ -25,7 +25,7 @@ public class SharkCollisionScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            logic.GameOver();
+            // logic.GameOver();
         }
         
     }
