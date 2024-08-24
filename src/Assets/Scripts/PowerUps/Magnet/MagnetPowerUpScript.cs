@@ -8,9 +8,10 @@ namespace PowerUps.Magnet
         public float moveSpeed = 0.001f;
         private const float DefaultRadius = 2;
         public float deadZone = -5;
-        private bool _isActivated = false;
+        private bool _isCollisionActivated = false;
         private GameObject _magnetTimerUi;
         private GameObject _invincibilityTimerUi;
+        private bool _isActivated = false;
 
         public LogicManagerScript logic;
 
@@ -62,6 +63,60 @@ namespace PowerUps.Magnet
                 logic.StartMagnetTimer();
             }
         }
+        
+        
+        /*private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (_isCollisionActivated)
+                return;
+
+            var collisionGameObject = collision.gameObject;
+            if (collisionGameObject.CompareTag("InvincibilityCollision") &&
+                collisionGameObject.CompareTag("CoinCollision"))
+            {
+                var playerCollider = collisionGameObject.GetComponent<CircleCollider2D>();
+                logic.StartInvincibilityTimer();
+                
+                
+                if (playerCollider != null)
+                {
+                    playerCollider.radius = 0;
+                    StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
+                    MakeInvisible();
+                }
+                
+            }
+
+           
+
+            if (collisionGameObject.CompareTag("InvincibilityCollision"))
+            {
+                _isCollisionActivated = true;
+
+                if (playerCollider != null)
+                {
+                    playerCollider.radius = 0;
+                    StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
+                    MakeInvisible();
+                }
+
+                logic.StartInvincibilityTimer();
+            }
+
+            if (collisionGameObject.CompareTag("CoinCollision"))
+            {
+                _isCollisionActivated = true;
+
+                if (playerCollider != null)
+                {
+                    playerCollider.radius = 0.9f;
+                    StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
+                    MakeInvisible();
+                }
+
+                logic.StartMagnetTimer();
+            }
+        }*/
 
         private void MakeInvisible()
         {
