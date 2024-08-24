@@ -40,6 +40,8 @@ public class BubbleLoaderScript : MonoBehaviour
             yield return null;
         }
 
+        Debug.LogWarning("In runtimer");
+
         transform.parent.gameObject.SetActive(false);
         _first = false;
     }

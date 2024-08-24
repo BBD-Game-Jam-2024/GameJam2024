@@ -28,24 +28,40 @@ public class BubbleCollisionScript : MonoBehaviour
         if (collision.gameObject.tag == "Player" && !_isActivated)
         {
 
+            Debug.LogWarning("Bubble collision script:");
             Debug.LogWarning(collision.gameObject.tag);
             _isActivated = true;
-            var playerCollider = collision.gameObject.GetComponent<CircleCollider2D>();
+            // var playerCollider = collision.gameObject.GetComponent<CircleCollider2D>();
 
-            if (playerCollider != null)
-            {
-                playerCollider.radius = 0f;
-                StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
-                // MakeInvisible();
-            }
-            logic.StartInvincibilityTimer();
+            // if (playerCollider != null)
+            // {
+            //     playerCollider.radius = DefaultRadius; // removing this logic and instead just ignoring shark collisions
+            //     StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
+            //     MakeInvisible();
+            // }
+            // logic.StartInvincibilityTimer();
 
         }
 
     }
+    private void MakeInvisible()
+    {
+        var renderer = GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = false;
+        }
+        var collider = GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
+    }
     private IEnumerator RevertRadiusAfterDelay(CircleCollider2D playerCollider, float delay, float originalRadius = DefaultRadius)
     {
         yield return new WaitForSeconds(delay);
+        
+        _isActivated = false;
         playerCollider.radius = originalRadius;
         Destroy(gameObject);
     }

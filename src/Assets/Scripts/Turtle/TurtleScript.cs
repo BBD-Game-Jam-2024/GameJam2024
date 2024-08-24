@@ -18,6 +18,7 @@ namespace Turtle
 
         private GameObject TurtleBase;
         private GameObject TurtleBubble;
+        private Coroutine bubbleCoroutine;
 
         private void Start()
         {
@@ -49,18 +50,29 @@ namespace Turtle
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.LogWarning(collision.gameObject.tag);
+            Debug.LogWarning("Turtle script:");
+            if(collision.gameObject.tag == "CoinCollision"){
+                Debug.LogWarning("Turtle colliding with coin");
+            }
 
             if (collision.gameObject.tag == "BubblePowerUp")
             {
-                Debug.LogWarning(collision.gameObject.tag);
-                StartCoroutine(SwitchToBubbleAndBack()); // this also makes the buddy invincible
-                var turtle = GameObject.FindWithTag("Player");
+                Debug.LogWarning("Turtle colliding with bubblePowerUp");
+                if (bubbleCoroutine != null)
+                {
+                    StopCoroutine(bubbleCoroutine);
+                }
+                bubbleCoroutine = StartCoroutine(SwitchToBubbleAndBack());
+                // invincible = true; // this is changed back to false at end of below coroutine
+                // StartCoroutine(SwitchToBubbleAndBack()); // this also makes the buddy invincible
+                // invincible = false;
+                // var turtle = GameObject.FindWithTag("Player");
             }
-            else if(collision.gameObject.tag == "SharkCollision" && !invincible){
+            else if (collision.gameObject.tag == "SharkCollision" && invincible == false)
+            {
                 logic.GameOver();
             }
-            
+
 
         }
         private IEnumerator SwitchToBubbleAndBack()
@@ -69,13 +81,19 @@ namespace Turtle
             TurtleBase.SetActive(false);
             TurtleBubble.SetActive(true);
             invincible = true;
+            Debug.LogWarning("now invincible");
             // Wait for 15 seconds
             yield return new WaitForSeconds(15f);
+            Debug.LogWarning("Switch back to normal");
+
+
 
             // Switch back to turtleBase
             TurtleBubble.SetActive(false);
             TurtleBase.SetActive(true);
             invincible = false;
+            Debug.LogWarning("Not invincible anymore");
+            bubbleCoroutine = null;
         }
     }
 }

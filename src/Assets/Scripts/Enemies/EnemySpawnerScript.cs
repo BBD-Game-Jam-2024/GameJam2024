@@ -39,13 +39,14 @@ public class EnemySpawnerScript : MonoBehaviour
         // Need to find the lowest point and highest point, below doesnt work idk why
         var lowestPoint = transform.position.y - heightOffset;
         var highestPoint = transform.position.y + heightOffset;
-        Instantiate(bubblePowerUp, new Vector3(transform.position.x, Random.Range(-2, 2), 0), transform.rotation);
         if(count == 0) {
             count++;
         }
         else {
             count = 0;
+            
             Instantiate(jellyFish, new Vector3(transform.position.x, Random.Range(-2, 2), 0), transform.rotation);
+            Instantiate(bubblePowerUp, new Vector3(transform.position.x, Random.Range(-2, 2), 0), transform.rotation);
         }
 
 

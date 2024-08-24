@@ -32,8 +32,8 @@ public class BubblePowerUpScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.gameObject.CompareTag("CoinCollision") &&!_isActivated)
+
+        if (collision.gameObject.tag == "Player" && !_isActivated)
         {
             _isActivated = true;
             var playerCollider = collision.gameObject.GetComponent<CircleCollider2D>();
@@ -50,6 +50,7 @@ public class BubblePowerUpScript : MonoBehaviour
 
     private void MakeInvisible()
     {
+        Debug.LogWarning("Making invisible?");
         var renderer = GetComponent<Renderer>();
         if (renderer != null)
         {
@@ -65,6 +66,7 @@ public class BubblePowerUpScript : MonoBehaviour
     private IEnumerator RevertRadiusAfterDelay(CircleCollider2D playerCollider, float delay, float originalRadius = DefaultRadius)
     {
         yield return new WaitForSeconds(delay);
+        _isActivated = false;
         playerCollider.radius = originalRadius;
         Destroy(gameObject);
     }

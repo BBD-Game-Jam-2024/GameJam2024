@@ -16,8 +16,9 @@ public class CoinCollisionScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("CoinCollision"))
+        if (collision.gameObject.tag == "Player")
         {
+            Debug.LogWarning("Should now be here");
             Destroy(transform.parent.gameObject);
             logic.AddScore(1);
         }
