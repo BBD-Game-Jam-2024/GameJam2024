@@ -13,6 +13,7 @@ public class LogicManagerScript : MonoBehaviour
     public GameObject mainMenu;
     
     public GameObject gameOverScreen;
+    public GameObject mainMenuImg;
     public GameObject enemySpawner;
     public GameObject coinSpawner;
     public GameObject turtle;
