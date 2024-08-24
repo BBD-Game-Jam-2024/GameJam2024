@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6669534337664727102}
   - component: {fileID: 3592522559713566290}
   m_Layer: 0
-  m_Name: PowerUp
+  m_Name: MagnetPowerUp
   m_TagString: MagnetPowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
