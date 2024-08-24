@@ -8,6 +8,9 @@ TagManager:
   - CoinCollision
   - MagnetTimer
   - MagnetPowerUp
+  - BubblePowerUp
+  - BubbleTimer
+  - SharkCollision
   layers:
   - Default
   - TransparentFX

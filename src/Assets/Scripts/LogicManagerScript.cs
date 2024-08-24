@@ -18,6 +18,7 @@ public class LogicManagerScript : MonoBehaviour
     public GameObject turtle;
     
     public GameObject magnetPowerUp;
+    public GameObject bubblePowerUp;
     
 
     public void AddScore(int scoreToAdd)
@@ -61,6 +62,17 @@ public class LogicManagerScript : MonoBehaviour
         var magnetLoaderScript = magnetLoader.GetComponent<MagnetLoaderScript>();
         magnetLoaderScript.StartTimer();
         
+
+    }
+
+    public void StartInvincibilityTimer()
+    {
+        bubblePowerUp.SetActive(true);
+        var bubbleLoader = bubblePowerUp.transform.Find("BubbleLoader").gameObject;
+        if (!bubbleLoader)
+            return;
+        var bubbleLoaderScript = bubbleLoader.GetComponent<BubbleLoaderScript>();
+        bubbleLoaderScript.StartTimer();
 
     }
     

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JellyFishCollisionScript : MonoBehaviour
+public class SharkCollisionScript : MonoBehaviour
 {
     public LogicManagerScript logic;
     public float deadZone = -5;
@@ -23,7 +23,7 @@ public class JellyFishCollisionScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 3 && collision.gameObject.tag != "CoinCollision")
+        if (collision.gameObject.layer == 3)
         {
             // logic.GameOver();
         }
