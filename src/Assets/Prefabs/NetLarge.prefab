@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2056286013795472998}
   - component: {fileID: 6979048789448090251}
-  - component: {fileID: 6832630417167832621}
   m_Layer: 0
   m_Name: Collision
   m_TagString: SharkCollision
@@ -78,20 +77,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27, y: 0.13}
   m_EdgeRadius: 0
---- !u!114 &6832630417167832621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684733530857682346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0657beda39e9ac4e994250174fdeb82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logic: {fileID: 0}
-  deadZone: -5
 --- !u!1 &4972778052103278725
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +87,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1569643179784639564}
   - component: {fileID: 623428491085973697}
-  - component: {fileID: 1681874199441996007}
+  - component: {fileID: 610890992605626726}
+  - component: {fileID: -2095851258332629446}
   m_Layer: 0
   m_Name: NetLarge
   m_TagString: SharkCollision
@@ -119,8 +105,8 @@ Transform:
   m_GameObject: {fileID: 4972778052103278725}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.04, y: 0.02, z: 0.07071555}
-  m_LocalScale: {x: -10, y: 10, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2056286013795472998}
@@ -178,24 +164,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1681874199441996007
-Animator:
-  serializedVersion: 5
+--- !u!114 &610890992605626726
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4972778052103278725}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 28f9fd030af25ad4b93428101fa5f0e6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5a8dd921ac4a2ebb7dfa68545d563e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedHeight: 2.26
+--- !u!114 &-2095851258332629446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4972778052103278725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e057a5a642694140b3cae44e32f0cfc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadZone: -5
+  speed: 0.4

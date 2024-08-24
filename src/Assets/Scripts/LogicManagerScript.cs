@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using PowerUps.Base;
 using Turtle;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class LogicManagerScript : MonoBehaviour
@@ -17,13 +19,21 @@ public class LogicManagerScript : MonoBehaviour
     public GameObject mainMenu;
 
     public GameObject gameOverScreen;
+
     public GameObject mainMenuImg;
-    public GameObject enemySpawner;
-    public GameObject coinSpawner;
+
+    // public GameObject enemySpawner;
+    // public GameObject coinSpawner;
     public GameObject turtle;
 
     public GameObject magnetPowerUp;
     public GameObject bubblePowerUp;
+
+    [FormerlySerializedAs("BackgroundAudioMenu")] [SerializeField]
+    public GameObject backgroundAudioMenu;
+
+    [FormerlySerializedAs("BackgroundAudioMain")] [SerializeField]
+    public GameObject backgroundAudioMain;
 
     public void AddScore(int scoreToAdd)
     {
@@ -34,24 +44,24 @@ public class LogicManagerScript : MonoBehaviour
     public void StartGame()
     {
         mainMenu.SetActive(false);
-        enemySpawner.SetActive(true);
-        coinSpawner.SetActive(true);
+        backgroundAudioMain.SetActive(true);
+        backgroundAudioMenu.SetActive(false);
+        // enemySpawner.SetActive(true);
+        // coinSpawner.SetActive(true);
         turtle.SetActive(true);
     }
 
     public void RestartGame()
     {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        enemySpawner.SetActive(true);
-        coinSpawner.SetActive(true);
+        // enemySpawner.SetActive(true);
+        // coinSpawner.SetActive(true);
         turtle.SetActive(true);
     }
 
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
-        enemySpawner.SetActive(false);
-        coinSpawner.SetActive(false);
         // TODO: disable/kill all the current enemies
         StartCoroutine(HandleScorePost());
 
@@ -104,7 +114,7 @@ public class LogicManagerScript : MonoBehaviour
         var magnetLoader = magnetPowerUp.transform.Find("MagnetLoader").gameObject;
         if (!magnetLoader)
             return;
-        var magnetLoaderScript = magnetLoader.GetComponent<MagnetLoaderScript>();
+        var magnetLoaderScript = magnetLoader.GetComponent<BaseLoaderScript>();
         magnetLoaderScript.StartTimer();
     }
 
@@ -114,8 +124,7 @@ public class LogicManagerScript : MonoBehaviour
         var bubbleLoader = bubblePowerUp.transform.Find("BubbleLoader").gameObject;
         if (!bubbleLoader)
             return;
-        var bubbleLoaderScript = bubbleLoader.GetComponent<BubbleLoaderScript>();
-        bubbleLoaderScript.StartTimer();
+        bubbleLoader.GetComponent<BaseLoaderScript>()?.StartTimer();
     }
 }
 

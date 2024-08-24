@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using BaseScripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,42 +8,30 @@ public class SpawnScript : MonoBehaviour
 {
     [SerializeField] public List<GameObject> itemToSpawn;
     [SerializeField] public List<float> spawnRatio;
-
     [SerializeField] public float spawnRate = 2;
     [SerializeField] public float heightOffset = 2;
     private float _timer;
 
     private void Update()
     {
-        if (_timer < spawnRate)
-            _timer += Time.deltaTime;
-        else
+        if (_timer >= spawnRate)
         {
-            var randomHeight = Random.Range(0, heightOffset);
-            var spawnPosition = transform.position + new Vector3(0, randomHeight, 0);
-            var item = RandomElementByWeight(itemToSpawn, (_, val) => spawnRatio.ElementAtOrDefault(val));
-            
-            Instantiate(item, spawnPosition, Quaternion.identity);
+            SpawnItem();
             _timer = 0;
         }
+        else
+            _timer += Time.deltaTime;
     }
 
-    // TODO: to a helper class
-    private static T RandomElementByWeight<T>(IEnumerable<T> sequence, Func<T, int, float> weightSelector)
+    private void SpawnItem()
     {
-        var enumerable = sequence.ToList();
-        var totalWeight = enumerable.Select(weightSelector).Sum();
-        var itemWeightIndex = (float)(new System.Random().NextDouble() * totalWeight);
-        float currentWeightIndex = 0;
+        var item = Utils.RandomElementByWeight(itemToSpawn, (_, val) => spawnRatio.ElementAtOrDefault(val));
+        // If the item has a fixed height, use that else use random bounds
+        var spawnHeight = item.TryGetComponent(out IFixedHeight fixedHeightItem)
+            ? fixedHeightItem.GetHeightSpecified()
+            : Random.Range(0f, heightOffset);
 
-        foreach (var item in enumerable.Select((item, index) =>
-                     new { Value = item, Weight = weightSelector(item, index) }))
-        {
-            currentWeightIndex += item.Weight;
-            if (currentWeightIndex >= itemWeightIndex)
-                return item.Value;
-        }
-
-        return default;
+        var spawnPosition = transform.position + new Vector3(0, spawnHeight, 0);
+        Instantiate(item, spawnPosition, Quaternion.identity);
     }
 }

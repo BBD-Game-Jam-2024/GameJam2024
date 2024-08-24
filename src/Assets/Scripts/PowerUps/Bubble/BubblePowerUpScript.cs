@@ -1,71 +1,56 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BubblePowerUpScript : MonoBehaviour
+namespace PowerUps.Bubble
 {
-    
-    private GameObject _bubbleTimerUi;
-    public float deadZone = -5;    
-    public float moveSpeed = 0.001f;
-    private const float DefaultRadius = 2;
-    private bool _isActivated = false;
-    public LogicManagerScript logic;
-
-    // Start is called before the first frame update
-    void Start()
+    public class BubblePowerUpScript : MonoBehaviour
     {
-        logic = GameObject
-            .FindWithTag("Logic")
-            .GetComponent<LogicManagerScript>();
-    }
+        private GameObject _bubbleTimerUi;
+        private const float DefaultRadius = 2;
+        private bool _isActivated;
+        public LogicManagerScript logic;
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position += (Vector3.left) * Time.deltaTime;
-        if (transform.position.x < deadZone)
+        // Start is called before the first frame update
+        private void Start()
         {
-            Destroy(gameObject);
+            logic = GameObject
+                .FindWithTag("Logic")
+                .GetComponent<LogicManagerScript>();
         }
-    }
-    
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        if (collision.gameObject.CompareTag("CoinCollision") &&!_isActivated)
+
+        // Update is called once per frame
+        private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!collision.gameObject.CompareTag("CoinCollision") || _isActivated) return;
+
             _isActivated = true;
             var playerCollider = collision.gameObject.GetComponent<CircleCollider2D>();
-            
+
             if (playerCollider != null)
             {
                 playerCollider.radius = 0;
                 StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
                 MakeInvisible();
             }
+
             logic.StartInvincibilityTimer();
         }
-    }
 
-    private void MakeInvisible()
-    {
-        var renderer = GetComponent<Renderer>();
-        if (renderer != null)
+        private void MakeInvisible()
         {
-            renderer.enabled = false;
-        }
-        var collider = GetComponent<Collider2D>();
-        if (collider != null)
-        {
-            collider.enabled = false;
-        }
-    }
+            var rendererComponent = GetComponent<Renderer>();
+            if (rendererComponent != null) rendererComponent.enabled = false;
 
-    private IEnumerator RevertRadiusAfterDelay(CircleCollider2D playerCollider, float delay, float originalRadius = DefaultRadius)
-    {
-        yield return new WaitForSeconds(delay);
-        playerCollider.radius = originalRadius;
-        Destroy(gameObject);
+            var colliderComponent = GetComponent<Collider2D>();
+            if (colliderComponent != null) colliderComponent.enabled = false;
+        }
+
+        private IEnumerator RevertRadiusAfterDelay(CircleCollider2D playerCollider, float delay,
+            float originalRadius = DefaultRadius)
+        {
+            yield return new WaitForSeconds(delay);
+            playerCollider.radius = originalRadius;
+            Destroy(gameObject);
+        }
     }
 }

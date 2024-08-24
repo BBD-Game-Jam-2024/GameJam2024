@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2056286013795472998}
   - component: {fileID: 6979048789448090251}
-  - component: {fileID: 6832630417167832621}
   m_Layer: 0
   m_Name: Collision
   m_TagString: SharkCollision
@@ -78,20 +77,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27, y: 0.13}
   m_EdgeRadius: 0
---- !u!114 &6832630417167832621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684733530857682346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0657beda39e9ac4e994250174fdeb82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logic: {fileID: 0}
-  deadZone: -5
 --- !u!1 &4972778052103278725
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,8 +87,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1569643179784639564}
   - component: {fileID: 623428491085973697}
-  - component: {fileID: 893662028187469525}
   - component: {fileID: 1681874199441996007}
+  - component: {fileID: 5125863670408237767}
   m_Layer: 0
   m_Name: Shark
   m_TagString: SharkCollision
@@ -179,20 +164,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &893662028187469525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4972778052103278725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83f109c30f5a9824fad1f25c33285d66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  deadZone: -5
 --- !u!95 &1681874199441996007
 Animator:
   serializedVersion: 5
@@ -214,3 +185,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5125863670408237767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4972778052103278725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e057a5a642694140b3cae44e32f0cfc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadZone: -5
+  speed: 1
