@@ -902,7 +902,7 @@ MonoBehaviour:
   leaderboardScreen: {fileID: 2070627235}
   leaderboardScreenOg: {fileID: 1194573890}
   turtle: {fileID: 140826218}
-  magnetPowerUp: {fileID: 552044997}
+  multiplierPowerUp: {fileID: 552044997}
   bubblePowerUp: {fileID: 794996566}
   panicBackgroundNotShowingOnWeb: {fileID: 699460382}
   panicBackgroundNotShowingOnWebLeader: {fileID: 1692000338}
@@ -1932,7 +1932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 267882865, guid: 89254d12a2d19ea4bbf9755483768ea5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cbc250535c0450746a9af6f12fcd3ae2, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2300,7 +2300,7 @@ MonoBehaviour:
   - {fileID: 1815731607191668604, guid: 0d05c0c21f9350747a17bc7b42987bee, type: 3}
   - {fileID: 7877577501255930368, guid: 474047577e9d35845b9ae0d5b1700912, type: 3}
   - {fileID: 4972778052103278725, guid: 15bf87ab7cc787c44a4449099de6d068, type: 3}
-  - {fileID: 7877577501255930368, guid: 0825636384e78134b80df218c89fdfc9, type: 3}
+  - {fileID: 7877577501255930368, guid: e4ff3252f3fb43244b9c820de23e0b2f, type: 3}
   - {fileID: 4972778052103278725, guid: 35c4ae01057a819428aad154f7258443, type: 3}
   - {fileID: 1815731607191668604, guid: c0fd4464f6ee1ac4ba3d65fa4cdf9bec, type: 3}
   - {fileID: 1815731607191668604, guid: af86e8e1a0cf02b4a8dd56a8b3317ee8, type: 3}

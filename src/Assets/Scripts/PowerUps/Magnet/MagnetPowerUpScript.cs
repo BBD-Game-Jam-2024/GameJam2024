@@ -31,7 +31,7 @@ namespace PowerUps.Magnet
 
             if (collision.gameObject.TryGetComponent<CircleCollider2D>(out var playerCollider))
             {
-                playerCollider.radius = 0.5f;
+                // playerCollider.radius = 0.5f;
                 StartCoroutine(RevertRadiusAfterDelay(playerCollider, 1f));
                 MakeInvisible();
             }

@@ -96,7 +96,6 @@ public class LogicManagerScript : MonoBehaviour
     {
         if (_isAdding) yield break;
         _isAdding = true;
-        // Stuff Unity and its JSON converter doesn't work
         var jsonBody = $"{{\"name\":\"{_turtleName}\", \"score\":{turtleScore}}}";
         var bytes = Encoding.UTF8.GetBytes(jsonBody);
         using var request = new UnityWebRequest(Utils.URL, "POST");
@@ -107,24 +106,9 @@ public class LogicManagerScript : MonoBehaviour
         yield return request.SendWebRequest();
         _isAdding = false;
         if (request.result == UnityWebRequest.Result.Success) yield break;
-
-        Debug.LogError($"Error in sending request: {request.error}");
-        Debug.LogError($"Response Code: {request.responseCode}");
-        Debug.LogError($"Response: {request.downloadHandler.text}");
     }
 
     public void StartMultiplierTimer()
-    {
-        multiplierPowerUp.SetActive(true);
-        var magnetLoader = multiplierPowerUp.transform.Find("MultiplierLoader").gameObject;
-        if (!magnetLoader)
-            return;
-        var magnetLoaderScript = magnetLoader.GetComponent<BaseLoaderScript>();
-        magnetLoaderScript.StartTimer();
-        
-    }
-
-    /*public void StartMagnetTimer()
     {
         multiplierPowerUp.SetActive(true);
         var magnetLoader = multiplierPowerUp.transform.Find("MagnetLoader").gameObject;
@@ -132,11 +116,14 @@ public class LogicManagerScript : MonoBehaviour
             return;
         var magnetLoaderScript = magnetLoader.GetComponent<BaseLoaderScript>();
         magnetLoaderScript.StartTimer();
-    }*/
+        
+    }
+
+    public void ChangeMultiplier(int i) => _multiplier = i;
+    
 
     public void StartInvincibilityTimer()
     {
-        Debug.LogWarning("Started invincibility timer from function");
         bubblePowerUp.SetActive(true);
         var bubbleLoader = bubblePowerUp.transform.Find("BubbleLoader").gameObject;
         if (!bubbleLoader)

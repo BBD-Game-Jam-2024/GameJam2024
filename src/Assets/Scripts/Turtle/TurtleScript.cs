@@ -18,7 +18,7 @@ namespace Turtle
         private GameObject _turtleBase;
         private GameObject _turtleBubble;
         private Coroutine _bubbleCoroutine;
-        private Coroutine _magCoroutine;
+        private Coroutine _multiCoroutine;
 
         private void Start()
         {
@@ -50,42 +50,30 @@ namespace Turtle
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            // Oof this is broken
-            if (_mag)
-            {
-                if (Vector2.Distance(gameObject.transform.position, collision.transform.position) < 0.065)
-                {
-                    return;
-                }
-            }
-
+            // Magnet power up is actually a Multiplier I just couldn't care less anymore
+            // Fuck this
+            // We ball
             if (collision.gameObject.CompareTag("MagnetPowerUp"))
             {
-                _mag = true;
-                if (_magCoroutine != null)
+                Debug.LogWarning("Turtle colliding with bubblePowerUp");
+                if (_multiCoroutine != null)
                 {
-                    StopCoroutine(_magCoroutine);
+                    StopCoroutine(_multiCoroutine);
                 }
 
-                _magCoroutine = StartCoroutine(SwitchMagAndBack());
+                _multiCoroutine = StartCoroutine(SwitchToMultiplier());
+                logic.StartMultiplierTimer();
             }
 
-            Debug.LogWarning("Turtle script:");
             if (collision.gameObject.CompareTag("BubblePowerUp"))
             {
-                Debug.LogWarning("Turtle colliding with bubblePowerUp");
                 if (_bubbleCoroutine != null)
                 {
                     StopCoroutine(_bubbleCoroutine);
                 }
 
                 _bubbleCoroutine = StartCoroutine(SwitchToBubbleAndBack());
-                Debug.LogWarning("Starting invincible timer from turtle");
                 logic.StartInvincibilityTimer();
-                // invincible = true; // this is changed back to false at end of below coroutine
-                // StartCoroutine(SwitchToBubbleAndBack()); // this also makes the buddy invincible
-                // invincible = false;
-                // var turtle = GameObject.FindWithTag("Player");
             }
             else if (collision.gameObject.CompareTag("SharkCollision") && !_invincible)
             {
@@ -99,6 +87,14 @@ namespace Turtle
             yield return new WaitForSeconds(15f);
             _mag = false;
         }
+        
+        private IEnumerator SwitchToMultiplier()
+        {
+            logic.ChangeMultiplier(2);
+            yield return new WaitForSeconds(15f);
+            _bubbleCoroutine = null;
+            logic.ChangeMultiplier(1);
+        }
 
         private IEnumerator SwitchToBubbleAndBack()
         {
@@ -106,16 +102,13 @@ namespace Turtle
             _turtleBase.SetActive(false);
             _turtleBubble.SetActive(true);
             _invincible = true;
-            Debug.LogWarning("now invincible");
             // Wait for 15 seconds
             yield return new WaitForSeconds(10f);
-            Debug.LogWarning("Switch back to normal");
 
             // Switch back to turtleBase
             _turtleBubble.SetActive(false);
             _turtleBase.SetActive(true);
             _invincible = false;
-            Debug.LogWarning("Not invincible anymore");
             _bubbleCoroutine = null;
         }
     }
