@@ -59,11 +59,7 @@ public static class Utils
         if (request.result == UnityWebRequest.Result.Success)
         {
             var downloadHandlerText = request.downloadHandler.text;
-            Debug.Log(downloadHandlerText);
             processData(JsonUtility.FromJson<ScoreList>(downloadHandlerText));
         }
-
-        else
-            Debug.LogError("GET request failed: " + request.error);
     }
 }

@@ -11,7 +11,6 @@ public class LeaderboardScript : MonoBehaviour
     {
         StartCoroutine(Utils.HandleScoreTop(data =>
             {
-                Debug.Log(data.scoreEntries.ToString());
                 data.scoreEntries
                     .Select((scoreEntry, index) => (scoreEntry, index))
                     .ToList()

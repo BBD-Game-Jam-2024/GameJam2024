@@ -33,6 +33,9 @@ namespace PowerUps.Magnet
             {
                 // playerCollider.radius = 0.5f;
                 StartCoroutine(RevertRadiusAfterDelay(playerCollider, 1f));
+                Debug.LogWarning("Radius changed to 0.3");
+                playerCollider.radius = 0.3f;
+                StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
                 MakeInvisible();
             }
 
@@ -48,7 +51,9 @@ namespace PowerUps.Magnet
         private IEnumerator RevertRadiusAfterDelay(CircleCollider2D playerCollider, float delay,
             float originalRadius = DefaultRadius)
         {
+            Debug.LogWarning("Going back to normal radius after 15s");
             yield return new WaitForSeconds(delay);
+            Debug.LogWarning("It's been 15s");
             playerCollider.radius = originalRadius;
             Destroy(gameObject);
         }
