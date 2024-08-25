@@ -29,7 +29,7 @@ public class SpawnScript : MonoBehaviour
         // If the item has a fixed height, use that else use random bounds
         var spawnHeight = item.TryGetComponent(out IFixedHeight fixedHeightItem)
             ? fixedHeightItem.GetHeightSpecified()
-            : Random.Range(0f, heightOffset);
+            : Random.Range(-heightOffset, heightOffset);
 
         var spawnPosition = transform.position + new Vector3(0, spawnHeight, 0);
         Instantiate(item, spawnPosition, Quaternion.identity);

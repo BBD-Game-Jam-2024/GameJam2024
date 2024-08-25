@@ -29,7 +29,7 @@ namespace PowerUps.Bubble
             if (playerCollider != null)
             {
                 playerCollider.radius = 0;
-                StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
+                StartCoroutine(RevertRadiusAfterDelay(playerCollider, 10f));
                 MakeInvisible();
             }
 

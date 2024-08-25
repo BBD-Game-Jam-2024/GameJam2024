@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Networking;
+using Random = System.Random;
 
 public static class Utils
 {
+    public const string URL =
+        "https://rjprox.pydevp.workers.dev?destination=https://turtletrouble.ryanjb.workers.dev/api/score";
+
     public static T RandomElementByWeight<T>(IEnumerable<T> sequence, Func<T, int, float> weightSelector)
     {
         var enumerable = sequence.ToList();
@@ -20,5 +27,43 @@ public static class Utils
         }
 
         return default;
+    }
+
+    [Serializable]
+    public class ScoreList
+    {
+        public List<ScoreEntry> scoreEntries;
+
+        public ScoreList(List<ScoreEntry> scoreEntries)
+        {
+            this.scoreEntries = scoreEntries;
+        }
+    }
+
+    [Serializable]
+    public class ScoreEntry
+    {
+        public string name;
+        public int score;
+        public ScoreEntry(string name, int score)
+        {
+            this.name = name;
+            this.score = score;
+        }
+    }
+
+    public static IEnumerator HandleScoreTop(Action<ScoreList> processData)
+    {
+        var request = UnityWebRequest.Get(URL);
+        yield return request.SendWebRequest();
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            var downloadHandlerText = request.downloadHandler.text;
+            Debug.Log(downloadHandlerText);
+            processData(JsonUtility.FromJson<ScoreList>(downloadHandlerText));
+        }
+
+        else
+            Debug.LogError("GET request failed: " + request.error);
     }
 }
