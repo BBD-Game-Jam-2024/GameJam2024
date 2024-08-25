@@ -26,6 +26,8 @@ public class LogicManagerScript : MonoBehaviour
 
     public GameObject panicBackgroundNotShowingOnWeb;
     public GameObject panicBackgroundNotShowingOnWebLeader;
+    public GameObject panicBackgroundNotShowingOnWebDead;
+    public TMP_Text panicFinalScore;
 
     public GameObject spawner;
 
@@ -85,7 +87,10 @@ public class LogicManagerScript : MonoBehaviour
     public void GameOver()
     {
         spawner.SetActive(false);
+        panicBackgroundNotShowingOnWebDead.SetActive(true);
         gameOverScreen.SetActive(true);
+        panicFinalScore.text = $"Score: {turtleScore}";
+        
         turtle.GetComponent<TurtleScript>().enabled = false;
         if (turtle.gameObject.TryGetComponent<CircleCollider2D>(out var component)) component.radius = 0;
         StartCoroutine(HandleScorePost());
@@ -116,11 +121,10 @@ public class LogicManagerScript : MonoBehaviour
             return;
         var magnetLoaderScript = magnetLoader.GetComponent<BaseLoaderScript>();
         magnetLoaderScript.StartTimer();
-        
     }
 
     public void ChangeMultiplier(int i) => _multiplier = i;
-    
+
 
     public void StartInvincibilityTimer()
     {
