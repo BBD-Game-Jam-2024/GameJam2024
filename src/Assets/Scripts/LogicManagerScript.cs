@@ -21,7 +21,7 @@ public class LogicManagerScript : MonoBehaviour
 
     public GameObject turtle;
 
-    public GameObject magnetPowerUp;
+    public GameObject multiplierPowerUp;
     public GameObject bubblePowerUp;
 
     public GameObject panicBackgroundNotShowingOnWeb;
@@ -42,10 +42,11 @@ public class LogicManagerScript : MonoBehaviour
 
     // Hack -> 
     private bool _isAdding;
+    private int _multiplier = 1;
 
     public void AddScore(int scoreToAdd)
     {
-        turtleScore += scoreToAdd;
+        turtleScore += scoreToAdd * _multiplier;
         score.text = $"{_turtleName} Score: {turtleScore}";
     }
 
@@ -112,15 +113,26 @@ public class LogicManagerScript : MonoBehaviour
         Debug.LogError($"Response: {request.downloadHandler.text}");
     }
 
-    public void StartMagnetTimer()
+    public void StartMultiplierTimer()
     {
-        magnetPowerUp.SetActive(true);
-        var magnetLoader = magnetPowerUp.transform.Find("MagnetLoader").gameObject;
+        multiplierPowerUp.SetActive(true);
+        var magnetLoader = multiplierPowerUp.transform.Find("MultiplierLoader").gameObject;
         if (!magnetLoader)
             return;
         var magnetLoaderScript = magnetLoader.GetComponent<BaseLoaderScript>();
         magnetLoaderScript.StartTimer();
+        
     }
+
+    /*public void StartMagnetTimer()
+    {
+        multiplierPowerUp.SetActive(true);
+        var magnetLoader = multiplierPowerUp.transform.Find("MagnetLoader").gameObject;
+        if (!magnetLoader)
+            return;
+        var magnetLoaderScript = magnetLoader.GetComponent<BaseLoaderScript>();
+        magnetLoaderScript.StartTimer();
+    }*/
 
     public void StartInvincibilityTimer()
     {

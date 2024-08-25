@@ -21,15 +21,16 @@ namespace PowerUps.Bubble
         // Update is called once per frame
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.gameObject.CompareTag("CoinCollision") || _isActivated) return;
+            if (collision.gameObject.CompareTag("CoinCollision") || _isActivated) return;
 
+      
             _isActivated = true;
             var playerCollider = collision.gameObject.GetComponent<CircleCollider2D>();
 
             if (playerCollider != null)
             {
-                playerCollider.radius = 0;
-                StartCoroutine(RevertRadiusAfterDelay(playerCollider, 10f));
+                // playerCollider.radius = 0;
+                // StartCoroutine(RevertRadiusAfterDelay(playerCollider, 10f));
                 MakeInvisible();
             }
 

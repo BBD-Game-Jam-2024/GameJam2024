@@ -13,10 +13,12 @@ namespace Turtle
         // screen boundaries maybe should use vec?
         [SerializeField] public float minX, minY, maxX, maxY;
         private bool _invincible;
+        private bool _mag;
 
         private GameObject _turtleBase;
         private GameObject _turtleBubble;
-        private Coroutine bubbleCoroutine;
+        private Coroutine _bubbleCoroutine;
+        private Coroutine _magCoroutine;
 
         private void Start()
         {
@@ -48,17 +50,36 @@ namespace Turtle
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.gameObject.CompareTag("CoinCollision")) return;
-            if (collision.gameObject.CompareTag("BubblePowerUp")) StartCoroutine(SwitchToBubbleAndBack());
+            // Oof this is broken
+            if (_mag)
+            {
+                if (Vector2.Distance(gameObject.transform.position, collision.transform.position) < 0.065)
+                {
+                    return;
+                }
+            }
+
+            if (collision.gameObject.CompareTag("MagnetPowerUp"))
+            {
+                _mag = true;
+                if (_magCoroutine != null)
+                {
+                    StopCoroutine(_magCoroutine);
+                }
+
+                _magCoroutine = StartCoroutine(SwitchMagAndBack());
+            }
+
             Debug.LogWarning("Turtle script:");
             if (collision.gameObject.CompareTag("BubblePowerUp"))
             {
                 Debug.LogWarning("Turtle colliding with bubblePowerUp");
-                if (bubbleCoroutine != null)
+                if (_bubbleCoroutine != null)
                 {
-                    StopCoroutine(bubbleCoroutine);
+                    StopCoroutine(_bubbleCoroutine);
                 }
-                bubbleCoroutine = StartCoroutine(SwitchToBubbleAndBack());
+
+                _bubbleCoroutine = StartCoroutine(SwitchToBubbleAndBack());
                 Debug.LogWarning("Starting invincible timer from turtle");
                 logic.StartInvincibilityTimer();
                 // invincible = true; // this is changed back to false at end of below coroutine
@@ -71,6 +92,12 @@ namespace Turtle
                 gameObject.SetActive(false);
                 logic.GameOver();
             }
+        }
+
+        private IEnumerator SwitchMagAndBack()
+        {
+            yield return new WaitForSeconds(15f);
+            _mag = false;
         }
 
         private IEnumerator SwitchToBubbleAndBack()
@@ -89,7 +116,7 @@ namespace Turtle
             _turtleBase.SetActive(true);
             _invincible = false;
             Debug.LogWarning("Not invincible anymore");
-            bubbleCoroutine = null;
+            _bubbleCoroutine = null;
         }
     }
 }
