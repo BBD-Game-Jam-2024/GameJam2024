@@ -22,11 +22,9 @@ namespace PowerUps.Base
 
         public void StartTimer()
         {
-            Debug.LogWarning("Starting loader timer");
             if (timerCoroutine != null)
             {
                 StopCoroutine(timerCoroutine);
-                //transform.parent.gameObject.SetActive(false);
             }
             timerCoroutine = StartCoroutine(RunTimer());
         }
