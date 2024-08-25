@@ -1,7 +1,5 @@
-using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+using UnityEngine;
 
 namespace Turtle
 {
@@ -10,14 +8,14 @@ namespace Turtle
         public float moveSpeed = 5f;
         public LogicManagerScript logic;
         private Camera _camera;
+        
 
-        // screen boundaries
-        public float MinX, MinY, MaxX, MaxY;
+        // screen boundaries maybe should use vec?
+        [SerializeField] public float minX, minY, maxX, maxY;
+        private bool _invincible;
 
-        private bool invincible = false;
-
-        private GameObject TurtleBase;
-        private GameObject TurtleBubble;
+        private GameObject _turtleBase;
+        private GameObject _turtleBubble;
         private Coroutine bubbleCoroutine;
 
         private void Start()
@@ -27,11 +25,14 @@ namespace Turtle
                 .FindWithTag("Logic")
                 .GetComponent<LogicManagerScript>();
 
-            TurtleBase = transform.Find("TurtleBase").gameObject;
-            TurtleBubble = transform.Find("TurtleBubble").gameObject;
+            _turtleBase = transform.Find("TurtleBase").gameObject;
+            _turtleBubble = transform.Find("TurtleBubble").gameObject;
 
             // Ensure that the bubble sprite is initially inactive
-            TurtleBubble.SetActive(false);
+            _turtleBubble.SetActive(false);
+            
+            
+            
         }
 
         private void Update()
@@ -43,11 +44,12 @@ namespace Turtle
         {
             if (!_camera) return;
             var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-            var clampedX = Mathf.Clamp(mousePosition.x, MinX, MaxX);
-            var clampedY = Mathf.Clamp(mousePosition.y, MinY, MaxY);
+            var clampedX = Mathf.Clamp(mousePosition.x, minX, maxX);
+            var clampedY = Mathf.Clamp(mousePosition.y, minY, maxY);
             var targetPosition = new Vector3(clampedX, clampedY, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             Debug.LogWarning("Turtle script:");
@@ -55,7 +57,7 @@ namespace Turtle
                 Debug.LogWarning("Turtle colliding with coin");
             }
 
-            if (collision.gameObject.tag == "BubblePowerUp")
+            if (collision.gameObject.CompareTag("BubblePowerUp"))
             {
                 Debug.LogWarning("Turtle colliding with bubblePowerUp");
                 if (bubbleCoroutine != null)
@@ -68,30 +70,27 @@ namespace Turtle
                 // invincible = false;
                 // var turtle = GameObject.FindWithTag("Player");
             }
-            else if (collision.gameObject.tag == "SharkCollision" && invincible == false)
+            else if (collision.gameObject.CompareTag("SharkCollision") && !_invincible)
             {
                 logic.GameOver();
             }
-
-
         }
+
         private IEnumerator SwitchToBubbleAndBack()
         {
             // Switch to turtleBubble
-            TurtleBase.SetActive(false);
-            TurtleBubble.SetActive(true);
-            invincible = true;
+            _turtleBase.SetActive(false);
+            _turtleBubble.SetActive(true);
+            _invincible = true;
             Debug.LogWarning("now invincible");
             // Wait for 15 seconds
             yield return new WaitForSeconds(15f);
             Debug.LogWarning("Switch back to normal");
 
-
-
             // Switch back to turtleBase
-            TurtleBubble.SetActive(false);
-            TurtleBase.SetActive(true);
-            invincible = false;
+            _turtleBubble.SetActive(false);
+            _turtleBase.SetActive(true);
+            _invincible = false;
             Debug.LogWarning("Not invincible anymore");
             bubbleCoroutine = null;
         }

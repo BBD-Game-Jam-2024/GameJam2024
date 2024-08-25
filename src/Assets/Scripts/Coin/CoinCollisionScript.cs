@@ -1,27 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinCollisionScript : MonoBehaviour
+namespace Coin
 {
-    public LogicManagerScript logic;
-    public float deadZone = -5;
-    
-    void Start()
+    public class CoinCollisionScript : MonoBehaviour
     {
-        logic = GameObject
-            .FindWithTag("Logic")
-            .GetComponent<LogicManagerScript>();
-    }
-    
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        public LogicManagerScript logic;
+
+        private void Start()
         {
-            Debug.LogWarning("Should now be here");
+            logic = GameObject
+                .FindWithTag("Logic")
+                .GetComponent<LogicManagerScript>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!collision.gameObject.CompareTag("CoinCollision")) return;
             Destroy(transform.parent.gameObject);
             logic.AddScore(1);
         }
-        
     }
 }
