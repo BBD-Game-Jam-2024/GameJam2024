@@ -21,11 +21,13 @@ public class LogicManagerScript : MonoBehaviour
 
     public GameObject turtle;
 
-    public GameObject magnetPowerUp;
+    public GameObject multiplierPowerUp;
     public GameObject bubblePowerUp;
 
     public GameObject panicBackgroundNotShowingOnWeb;
     public GameObject panicBackgroundNotShowingOnWebLeader;
+    public GameObject panicBackgroundNotShowingOnWebDead;
+    public TMP_Text panicFinalScore;
 
     public GameObject spawner;
 
@@ -42,10 +44,11 @@ public class LogicManagerScript : MonoBehaviour
 
     // Hack -> 
     private bool _isAdding;
+    private int _multiplier = 1;
 
     public void AddScore(int scoreToAdd)
     {
-        turtleScore += scoreToAdd;
+        turtleScore += scoreToAdd * _multiplier;
         score.text = $"{_turtleName} Score: {turtleScore}";
     }
 
@@ -84,7 +87,10 @@ public class LogicManagerScript : MonoBehaviour
     public void GameOver()
     {
         spawner.SetActive(false);
+        panicBackgroundNotShowingOnWebDead.SetActive(true);
         gameOverScreen.SetActive(true);
+        panicFinalScore.text = $"Score: {turtleScore}";
+        
         turtle.GetComponent<TurtleScript>().enabled = false;
         if (turtle.gameObject.TryGetComponent<CircleCollider2D>(out var component)) component.radius = 0;
         StartCoroutine(HandleScorePost());
@@ -95,7 +101,6 @@ public class LogicManagerScript : MonoBehaviour
     {
         if (_isAdding) yield break;
         _isAdding = true;
-        // Stuff Unity and its JSON converter doesn't work
         var jsonBody = $"{{\"name\":\"{_turtleName}\", \"score\":{turtleScore}}}";
         var bytes = Encoding.UTF8.GetBytes(jsonBody);
         using var request = new UnityWebRequest(Utils.URL, "POST");
@@ -106,21 +111,20 @@ public class LogicManagerScript : MonoBehaviour
         yield return request.SendWebRequest();
         _isAdding = false;
         if (request.result == UnityWebRequest.Result.Success) yield break;
-
-        Debug.LogError($"Error in sending request: {request.error}");
-        Debug.LogError($"Response Code: {request.responseCode}");
-        Debug.LogError($"Response: {request.downloadHandler.text}");
     }
 
-    public void StartMagnetTimer()
+    public void StartMultiplierTimer()
     {
-        magnetPowerUp.SetActive(true);
-        var magnetLoader = magnetPowerUp.transform.Find("MagnetLoader").gameObject;
+        multiplierPowerUp.SetActive(true);
+        var magnetLoader = multiplierPowerUp.transform.Find("MagnetLoader").gameObject;
         if (!magnetLoader)
             return;
         var magnetLoaderScript = magnetLoader.GetComponent<BaseLoaderScript>();
         magnetLoaderScript.StartTimer();
     }
+
+    public void ChangeMultiplier(int i) => _multiplier = i;
+
 
     public void StartInvincibilityTimer()
     {

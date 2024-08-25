@@ -13,9 +13,12 @@ namespace Turtle
         // screen boundaries maybe should use vec?
         [SerializeField] public float minX, minY, maxX, maxY;
         private bool _invincible;
+        private bool _mag;
 
         private GameObject _turtleBase;
         private GameObject _turtleBubble;
+        private Coroutine _bubbleCoroutine;
+        private Coroutine _multiCoroutine;
 
         private void Start()
         {
@@ -47,13 +50,50 @@ namespace Turtle
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.gameObject.CompareTag("CoinCollision")) return;
-            if (collision.gameObject.CompareTag("BubblePowerUp")) StartCoroutine(SwitchToBubbleAndBack());
+            // Magnet power up is actually a Multiplier I just couldn't care less anymore
+            // Fuck this
+            // We ball
+            if (collision.gameObject.CompareTag("MagnetPowerUp"))
+            {
+                Debug.LogWarning("Turtle colliding with bubblePowerUp");
+                if (_multiCoroutine != null)
+                {
+                    StopCoroutine(_multiCoroutine);
+                }
+
+                _multiCoroutine = StartCoroutine(SwitchToMultiplier());
+                logic.StartMultiplierTimer();
+            }
+
+            if (collision.gameObject.CompareTag("BubblePowerUp"))
+            {
+                if (_bubbleCoroutine != null)
+                {
+                    StopCoroutine(_bubbleCoroutine);
+                }
+
+                _bubbleCoroutine = StartCoroutine(SwitchToBubbleAndBack());
+                logic.StartInvincibilityTimer();
+            }
             else if (collision.gameObject.CompareTag("SharkCollision") && !_invincible)
             {
                 gameObject.SetActive(false);
                 logic.GameOver();
             }
+        }
+
+        private IEnumerator SwitchMagAndBack()
+        {
+            yield return new WaitForSeconds(15f);
+            _mag = false;
+        }
+        
+        private IEnumerator SwitchToMultiplier()
+        {
+            logic.ChangeMultiplier(2);
+            yield return new WaitForSeconds(15f);
+            _bubbleCoroutine = null;
+            logic.ChangeMultiplier(1);
         }
 
         private IEnumerator SwitchToBubbleAndBack()
@@ -69,6 +109,7 @@ namespace Turtle
             _turtleBubble.SetActive(false);
             _turtleBase.SetActive(true);
             _invincible = false;
+            _bubbleCoroutine = null;
         }
     }
 }
