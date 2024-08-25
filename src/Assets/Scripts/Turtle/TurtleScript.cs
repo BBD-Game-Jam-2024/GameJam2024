@@ -8,7 +8,7 @@ namespace Turtle
         public float moveSpeed = 5f;
         public LogicManagerScript logic;
         private Camera _camera;
-        
+
 
         // screen boundaries maybe should use vec?
         [SerializeField] public float minX, minY, maxX, maxY;
@@ -26,12 +26,8 @@ namespace Turtle
 
             _turtleBase = transform.Find("TurtleBase").gameObject;
             _turtleBubble = transform.Find("TurtleBubble").gameObject;
-
             // Ensure that the bubble sprite is initially inactive
             _turtleBubble.SetActive(false);
-            
-            
-            
         }
 
         private void Update()
@@ -51,15 +47,11 @@ namespace Turtle
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            // Debug.LogWarning(collision.gameObject.tag);
-
-            if (collision.gameObject.CompareTag("BubblePowerUp"))
-            {
-                // Debug.LogWarning(collision.gameObject.tag);
-                StartCoroutine(SwitchToBubbleAndBack()); // this also makes the buddy invincible
-            }
+            if (!collision.gameObject.CompareTag("CoinCollision")) return;
+            if (collision.gameObject.CompareTag("BubblePowerUp")) StartCoroutine(SwitchToBubbleAndBack());
             else if (collision.gameObject.CompareTag("SharkCollision") && !_invincible)
             {
+                gameObject.SetActive(false);
                 logic.GameOver();
             }
         }

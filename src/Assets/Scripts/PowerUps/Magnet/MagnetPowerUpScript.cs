@@ -5,7 +5,7 @@ namespace PowerUps.Magnet
 {
     public class MagnetPowerUpScript : MonoBehaviour
     {
-        private const float DefaultRadius = 2;
+        private const float DefaultRadius = 0.2f;
         private bool _isActivated;
 
         public LogicManagerScript logic;
@@ -20,13 +20,10 @@ namespace PowerUps.Magnet
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!collision.gameObject.CompareTag("CoinCollision") || _isActivated) return;
-
             _isActivated = true;
-            var playerCollider = collision.gameObject.GetComponent<CircleCollider2D>();
-
-            if (playerCollider)
+            if (collision.gameObject.TryGetComponent<CircleCollider2D>(out var playerCollider))
             {
-                playerCollider.radius = 0.9f;
+                playerCollider.radius = 0.5f;
                 StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
                 MakeInvisible();
             }
@@ -36,17 +33,8 @@ namespace PowerUps.Magnet
 
         private void MakeInvisible()
         {
-            var rendererComponent = GetComponent<Renderer>();
-            if (rendererComponent != null)
-            {
-                rendererComponent.enabled = false;
-            }
-
-            var collider = GetComponent<Collider2D>();
-            if (collider != null)
-            {
-                collider.enabled = false;
-            }
+            if (TryGetComponent<Renderer>(out var rendererComponent)) rendererComponent.enabled = false;
+            if (TryGetComponent<Collider2D>(out var c)) c.enabled = false;
         }
 
         private IEnumerator RevertRadiusAfterDelay(CircleCollider2D playerCollider, float delay,
