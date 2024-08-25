@@ -902,7 +902,7 @@ MonoBehaviour:
   leaderboardScreen: {fileID: 2070627235}
   leaderboardScreenOg: {fileID: 1194573890}
   turtle: {fileID: 140826218}
-  multiplierPowerUp: {fileID: 0}
+  multiplierPowerUp: {fileID: 552044997}
   bubblePowerUp: {fileID: 794996566}
   panicBackgroundNotShowingOnWeb: {fileID: 699460382}
   panicBackgroundNotShowingOnWebLeader: {fileID: 1692000338}
@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 267882865, guid: 89254d12a2d19ea4bbf9755483768ea5, type: 3}
+  m_Sprite: {fileID: -484318533, guid: 90c9ee8211637fd4ba83f8f71139e2ba, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
