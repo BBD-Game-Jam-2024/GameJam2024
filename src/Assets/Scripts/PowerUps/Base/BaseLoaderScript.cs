@@ -8,6 +8,7 @@ namespace PowerUps.Base
     {
         [SerializeField] public float duration = 15f;
         private Image _timerCircle;
+        private Coroutine timerCoroutine;
 
         private void OnEnable()
         {
@@ -21,8 +22,13 @@ namespace PowerUps.Base
 
         public void StartTimer()
         {
-            Debug.LogWarning("Starting loader");
-            StartCoroutine(RunTimer());
+            Debug.LogWarning("Starting loader timer");
+            if (timerCoroutine != null)
+            {
+                StopCoroutine(timerCoroutine);
+                //transform.parent.gameObject.SetActive(false);
+            }
+            timerCoroutine = StartCoroutine(RunTimer());
         }
 
         private IEnumerator RunTimer()

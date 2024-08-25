@@ -33,7 +33,7 @@ namespace PowerUps.Bubble
                 MakeInvisible();
             }
 
-            logic.StartInvincibilityTimer();
+            // logic.StartInvincibilityTimer();
         }
 
         private void MakeInvisible()
@@ -53,4 +53,12 @@ namespace PowerUps.Bubble
             Destroy(gameObject);
         }
     }
+
+    // private IEnumerator RevertRadiusAfterDelay(CircleCollider2D playerCollider, float delay, float originalRadius = DefaultRadius)
+    // {
+    //     yield return new WaitForSeconds(delay);
+    //     _isActivated = false;
+    //     playerCollider.radius = originalRadius;
+    //     Destroy(gameObject);
+    // }
 }

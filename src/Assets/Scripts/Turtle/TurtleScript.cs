@@ -16,6 +16,7 @@ namespace Turtle
 
         private GameObject _turtleBase;
         private GameObject _turtleBubble;
+        private Coroutine bubbleCoroutine;
 
         private void Start()
         {
@@ -49,6 +50,22 @@ namespace Turtle
         {
             if (!collision.gameObject.CompareTag("CoinCollision")) return;
             if (collision.gameObject.CompareTag("BubblePowerUp")) StartCoroutine(SwitchToBubbleAndBack());
+            Debug.LogWarning("Turtle script:");
+            if (collision.gameObject.CompareTag("BubblePowerUp"))
+            {
+                Debug.LogWarning("Turtle colliding with bubblePowerUp");
+                if (bubbleCoroutine != null)
+                {
+                    StopCoroutine(bubbleCoroutine);
+                }
+                bubbleCoroutine = StartCoroutine(SwitchToBubbleAndBack());
+                Debug.LogWarning("Starting invincible timer from turtle");
+                logic.StartInvincibilityTimer();
+                // invincible = true; // this is changed back to false at end of below coroutine
+                // StartCoroutine(SwitchToBubbleAndBack()); // this also makes the buddy invincible
+                // invincible = false;
+                // var turtle = GameObject.FindWithTag("Player");
+            }
             else if (collision.gameObject.CompareTag("SharkCollision") && !_invincible)
             {
                 gameObject.SetActive(false);
@@ -62,13 +79,17 @@ namespace Turtle
             _turtleBase.SetActive(false);
             _turtleBubble.SetActive(true);
             _invincible = true;
+            Debug.LogWarning("now invincible");
             // Wait for 15 seconds
             yield return new WaitForSeconds(10f);
+            Debug.LogWarning("Switch back to normal");
 
             // Switch back to turtleBase
             _turtleBubble.SetActive(false);
             _turtleBase.SetActive(true);
             _invincible = false;
+            Debug.LogWarning("Not invincible anymore");
+            bubbleCoroutine = null;
         }
     }
 }
