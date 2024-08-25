@@ -503,8 +503,8 @@ MonoBehaviour:
   turtle: {fileID: 140826218}
   magnetPowerUp: {fileID: 552044997}
   bubblePowerUp: {fileID: 794996566}
-  BackgroundAudioMenu: {fileID: 1220453429}
-  BackgroundAudioMain: {fileID: 1399343637}
+  backgroundAudioMenu: {fileID: 1220453429}
+  backgroundAudioMain: {fileID: 1399343637}
 --- !u!4 &319183640
 Transform:
   m_ObjectHideFlags: 0
@@ -937,10 +937,10 @@ MonoBehaviour:
   - {fileID: 4972778052103278725, guid: 35c4ae01057a819428aad154f7258443, type: 3}
   spawnRatio:
   - 100
-  - 500
   - 100
-  - 50
-  - 50
+  - 0
+  - 200
+  - 0
   spawnRate: 2
   heightOffset: 3.25
 --- !u!4 &956138886

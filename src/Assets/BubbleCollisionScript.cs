@@ -5,7 +5,7 @@ using UnityEngine;
 public class BubbleCollisionScript : MonoBehaviour
 {
     public LogicManagerScript logic;
-    private const float DefaultRadius = 2;
+    private const float DefaultRadius = 0.065f;
 
     private bool _isActivated;
 

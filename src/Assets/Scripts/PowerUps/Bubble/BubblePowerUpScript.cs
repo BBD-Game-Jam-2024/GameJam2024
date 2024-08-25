@@ -6,7 +6,7 @@ namespace PowerUps.Bubble
     public class BubblePowerUpScript : MonoBehaviour
     {
         private GameObject _bubbleTimerUi;
-        private const float DefaultRadius = 2;
+        private const float DefaultRadius = 0.065f;
         private bool _isActivated;
         public LogicManagerScript logic;
 
@@ -28,7 +28,7 @@ namespace PowerUps.Bubble
 
             if (playerCollider != null)
             {
-                playerCollider.radius = 0;
+                // playerCollider.radius = 0;
                 StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
                 MakeInvisible();
             }

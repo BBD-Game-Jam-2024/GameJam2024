@@ -26,7 +26,7 @@ namespace PowerUps.Base
             if (!playerCollider) return;
 
 
-            playerCollider.radius = 0.9f;
+            playerCollider.radius = 0.065f;
             // StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
             // MakeInvisible();
         }
