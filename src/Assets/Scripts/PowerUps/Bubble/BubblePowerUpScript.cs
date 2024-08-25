@@ -33,7 +33,7 @@ namespace PowerUps.Bubble
                 MakeInvisible();
             }
 
-            logic.StartInvincibilityTimer();
+            // logic.StartInvincibilityTimer();
         }
 
         private void MakeInvisible()

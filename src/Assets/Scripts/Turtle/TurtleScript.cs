@@ -65,6 +65,8 @@ namespace Turtle
                     StopCoroutine(bubbleCoroutine);
                 }
                 bubbleCoroutine = StartCoroutine(SwitchToBubbleAndBack());
+                Debug.LogWarning("Starting invincible timer from turtle");
+                logic.StartInvincibilityTimer();
                 // invincible = true; // this is changed back to false at end of below coroutine
                 // StartCoroutine(SwitchToBubbleAndBack()); // this also makes the buddy invincible
                 // invincible = false;
@@ -84,7 +86,7 @@ namespace Turtle
             _invincible = true;
             Debug.LogWarning("now invincible");
             // Wait for 15 seconds
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(10f);
             Debug.LogWarning("Switch back to normal");
 
             // Switch back to turtleBase
