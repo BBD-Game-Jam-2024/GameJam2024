@@ -47,8 +47,13 @@ namespace Turtle
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!collision.gameObject.CompareTag("CoinCollision")) return;
             if (collision.gameObject.CompareTag("BubblePowerUp")) StartCoroutine(SwitchToBubbleAndBack());
-            else if (collision.gameObject.CompareTag("SharkCollision") && !_invincible) logic.GameOver();
+            else if (collision.gameObject.CompareTag("SharkCollision") && !_invincible)
+            {
+                gameObject.SetActive(false);
+                logic.GameOver();
+            }
         }
 
         private IEnumerator SwitchToBubbleAndBack()

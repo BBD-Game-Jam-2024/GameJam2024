@@ -33,11 +33,15 @@ public class LogicManagerScript : MonoBehaviour
 
     private string _turtleName;
 
+
     [FormerlySerializedAs("BackgroundAudioMenu")] [SerializeField]
     public GameObject backgroundAudioMenu;
 
     [FormerlySerializedAs("BackgroundAudioMain")] [SerializeField]
     public GameObject backgroundAudioMain;
+
+    // Hack -> 
+    private bool _isAdding;
 
     public void AddScore(int scoreToAdd)
     {
@@ -81,9 +85,6 @@ public class LogicManagerScript : MonoBehaviour
     {
         spawner.SetActive(false);
         gameOverScreen.SetActive(true);
-
-        // var turtle = GameObject.FindWithTag("Player");
-        // if (turtle != null)
         turtle.GetComponent<TurtleScript>().enabled = false;
         if (turtle.gameObject.TryGetComponent<CircleCollider2D>(out var component)) component.radius = 0;
         StartCoroutine(HandleScorePost());
@@ -92,6 +93,8 @@ public class LogicManagerScript : MonoBehaviour
 
     private IEnumerator HandleScorePost()
     {
+        if (_isAdding) yield break;
+        _isAdding = true;
         // Stuff Unity and its JSON converter doesn't work
         var jsonBody = $"{{\"name\":\"{_turtleName}\", \"score\":{turtleScore}}}";
         var bytes = Encoding.UTF8.GetBytes(jsonBody);
@@ -101,6 +104,7 @@ public class LogicManagerScript : MonoBehaviour
         request.downloadHandler = new DownloadHandlerBuffer();
 
         yield return request.SendWebRequest();
+        _isAdding = false;
         if (request.result == UnityWebRequest.Result.Success) yield break;
 
         Debug.LogError($"Error in sending request: {request.error}");
