@@ -27,7 +27,7 @@ public class LeaderboardScript : MonoBehaviour
         textBgObj.SetActive(true);
         textObj.SetActive(true);
         if (textObj.TryGetComponent<TMP_Text>(out var textMeshPro))
-            textMeshPro.text = $"{index + 1}. {scoreEntry.name.PadLeft(14)}  {scoreEntry.score}";
+            textMeshPro.text = $"{index + 1}. {scoreEntry.name,14}  {scoreEntry.score,-10}";
         textObj.transform.localPosition = new Vector3(0, index * -50 + 80, 0);
         textBgObj.transform.localPosition = new Vector3(0, index * -50 + 80, 0);
     }

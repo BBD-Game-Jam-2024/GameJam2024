@@ -5,7 +5,7 @@ namespace PowerUps.Magnet
 {
     public class MagnetPowerUpScript : MonoBehaviour
     {
-        private const float DefaultRadius = 2;
+        private const float DefaultRadius = 0.2f;
         private bool _isActivated;
 
         public LogicManagerScript logic;
@@ -23,7 +23,7 @@ namespace PowerUps.Magnet
             _isActivated = true;
             if (collision.gameObject.TryGetComponent<CircleCollider2D>(out var playerCollider))
             {
-                playerCollider.radius = 0.9f;
+                playerCollider.radius = 0.5f;
                 StartCoroutine(RevertRadiusAfterDelay(playerCollider, 15f));
                 MakeInvisible();
             }
